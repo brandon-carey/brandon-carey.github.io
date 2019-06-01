@@ -1,0 +1,398 @@
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=11">
+  <title>Cloud9 Smart</title>
+  <script language="javascript" type="text/javascript" src="https://www.orderporter.com/cust/jQuery/jquery-1.8.0.min.js"></script>
+  <script language="javascript" type="text/javascript" src="https://www.orderporter.com/cust/Sell/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+  <script language="javascript" type="text/javascript" src="https://www.orderporter.com/cust/jQuery/jSignature/jSignature.min.js"></script>
+
+  <link rel="Stylesheet" type="text/css" href="https://www.orderporter.com/cust/Sell/script/jquery/jquery-ui-1.10.4.custom.min.css">
+  <style type="text/css">
+    body {
+      margin: 0px;
+    }
+
+    .background-image {
+      width: 100%;
+      height: 715px;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-image: url("./IMG_2158.JPG");
+    }
+
+    .logo-container {
+      position: relative;
+      padding-bottom: 175px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      margin-left: -100px;
+      height: 125px;
+      width: 195px;
+    }
+
+    .author > p {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      color: white;
+      margin: 10px;
+      line-height: 22px;
+    }
+
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-title {
+      color: white;
+      font-size: 60px;
+      margin: 0px;
+      margin: 0px 0px 10px 0px;
+      font-family: Avenir Next;
+    }
+
+    .sub-title {
+      color: white;
+      font-size: 40px;
+      margin: 0px 0px 10px 0px;
+      font-family: Avenir Next;
+    }
+
+    .quote-number {
+      color: white;
+      font-size: 20px;
+      margin: 0px 0px 50px 0px;
+      font-family: Avenir Next;
+    }
+
+    .arrow {
+      color: white;
+      font-size: 100px;
+      margin: 0px 0px 50px 0px;
+    }
+
+    .view-proposal {
+      border-radius: 8px;
+      background-color: grey;
+      background-color: #dddddd;
+      width: 300px;
+      height: 60px;
+      opacity: 0.95;
+      border: 1px solid red;
+      color: white;
+      font-size: 26px
+    }
+
+    .quote-overview, .approval-title {
+      font-family: Avenir Next;
+      text-align: center;
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #9B9B9B;
+    }
+
+    td {
+      color: #9B9B9B;
+      font-size: 20px;
+    }
+
+    tr:last-child > td {
+      padding-top: 12px;
+    }
+
+    .line {
+      margin-top: 50px;
+      color: #9B9B9B;
+      width: 80%
+    }
+
+    .need-approval-container {
+      display: flex;
+      padding: 0 100px 100px 100px;
+      justify-content: space-between;
+    }
+
+    .view-terms {
+    }
+
+    .dropdown-text {
+      cursor: pointer;
+      font-family: Avenir Next;
+      color: #9B9B9B;
+      border-bottom: 1px solid #9B9B9B;
+    }
+
+    .terms-text {
+      display: none;
+      padding: 0px 150px;
+    }
+
+    .check-and-sig {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    .sign-box {
+      width: 700px;
+      height: 100px;
+      background: #DBDBDB;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid red;
+    }
+
+    .sign-box > div {
+      border-bottom: 1px solid black;
+      margin-top: 85px;
+    }
+
+    #terms-text > p:nth-child(3) {
+      margin-bottom: 50px;
+    }
+
+    /* The container */
+    .container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      padding-top: 5px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-family: Avenir Next;
+      font-size: 16px;
+      color: #9B9B9B;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+      background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    .approve-container {
+      padding: 0px 125px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .sign-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 125px;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    input {
+      height: 30px;
+      outline: 0;
+      border-width: 0 0 2px;
+      width: 375px;
+      border-color: #9B9B9B;
+    }
+
+    input:focus {
+      border-color: red;
+    }
+
+    ::placeholder {
+      color: red;
+      font-size: 20px;
+      font-family: Avenir Next;
+      font-weight: 100;
+    }
+
+    .confirm {
+      border-radius: 8px;
+      background-color: grey;
+      background-color: #dddddd;
+      width: 300px;
+      height: 60px;
+      opacity: 0.95;
+      border: 1px solid red;
+      color: white;
+      font-size: 26px;
+      display: block;
+      margin: auto;
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+
+    .footer {
+      display: flex;
+      padding: 0 20px;
+      justify-content: space-between;
+    }
+
+    .footer > p {
+      font-size: 20px;
+      font-family: Avenir Next;
+      color: #9B9B9B;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+    function showTerms() {
+      var text = document.getElementById("terms-text")
+      if (text.style.display === '' || text.style.display === 'none') {
+        text.style.display = 'block';
+      } else {
+        console.log('hi')
+        text.style.display = 'none'
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <div class='background-image'>
+    <div class='logo-container'>
+      <img class='logo' src="https://www.cloud9smart.com/wp-content/uploads/2016/09/Cloud9-Smart-Logo.png" alt="Cloud9 Smart - Home &amp; Office Automation" id="logo" data-height-percentage="97" data-actual-width="109" data-actual-height="70">
+      <div class='author'>
+        <p>Prepared By: <br> Brandon Carey <br> Design Engineer </p>
+      </div>
+    </div>
+    <div class='header-container'>
+      <p class='header-title'> Gontar Residence </p>
+      <p class='sub-title'> Lighting and Shades </p>
+      <p class='quote-number'> Quote # bcarey02251v3 </p>
+      <p class='arrow'>&darr;</p>
+      <button class='view-proposal'> View Proposal </button>
+    </div>
+  </div>
+  <div>
+    <p class='quote-overview'> Quote Overview</p>
+    <table>
+      <tr>
+        <td width="80%">Lutron Homeworks Keypads</td>
+        <td>Subtotal $12,520.00</td>
+      </tr>
+      <tr>
+        <td>Shades</td>
+        <td>Subtotal $22,520.00</td>
+      </tr>
+      <tr>
+        <td>Homeworks Head End Equiopment</td>
+        <td>Subtotal $12,520.00</td>
+      </tr>
+      <tr>
+        <td>Materials (Lutron)</td>
+        <td>Subtotal $2,520.00</td>
+      </tr>
+      <tr>
+        <td>Labor (Light and Shade)</td>
+        <td>Subtotal $32,520.00</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Total $89,520.00</td>
+      </tr>
+    </table>
+  </div>
+  <hr class='line'>
+  <p class='approval-title'>Approval</p>
+  <div class='approve-container'>
+    <div class='check-and-sig'>
+      <label class="container">I agree to terms and conditions
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <p class='dropdown-text' onclick="showTerms()"> View terms and conditions </p>
+  </div>
+  <div id='terms-text' class='terms-text'>
+    <p>
+    Sales Tax and shipping not included. Sales Tax and shipping will be billed on final invoice.
+    </p>
+    <p>
+    Make checks payable to:  Cloud9 Smart, LLC
+    </p>
+    <p>
+    Purchaser must pay Seller 50% of the Total Due upon Contract Signing ("First Payment"). An additional 30% of the Total Due ("Second Payment") must be made prior to ordering equipment. Upon ("Substantial Completion") the remaining 20% ("Third Payment") will be invoiced as due upon receipt.Substantial Completion is achieved once your equipment has been delivered, installed, and is operational. There may be outstanding items on your punch list which will continue to be addressed until the punch list is complete. Seller will have the right to not deliver the Equipment if the First Payment and Second Payment are not paid as required herein. If Purchaser changes Proposal, which must occur in writing, Purchaser will pay the adjusted price. Purchaser will secure all necessary authorization for installation on Premises, including building management clearance. If Purchaser fails to do so in advance of Seller commencing work, Purchaser shall be liable for all delay costs. Purchaser must provide Seller with, at a minimum, twenty-four (24) hours written notice of any delay in obtaining access or permissions necessary for Seller to enter and begin work at the Premises. If requested work cannot be performed due to delay of project, Purchaser agrees to pay Seller's standard hourly labor rate. In the event that Purchaser shall fail to make any payments when due, or shall fail to perform any other obligation to be performed as specified, then Seller, without liability, may suspend shipments and work on this and any other contracts between Purchaser and Seller until payments are made in full or until receipt by Seller of assurances satisfactory to Seller. Seller may at its option take possession of and remove the Equipment, without liability for trespass or damage.
+    Title and ownership of the Equipment, accessories and interconnecting cable and wires shall at all times remain with Seller, unless and until the purchase price has been paid in full to Seller. This equipment will be installed and remain at the above listed site address unless the purchase price has been paid in full. The risk or loss for any damages to or destruction of the Equipment or any portion thereof from and after the time of delivery thereof to Premises shall be on Purchaser, except with respect to damage or destruction resulting from the gross negligence or willful conduct of Seller. Purchaser is responsible to provide protection of Equipment against theft during the installation. In the event Premises are not available for any reason, or in the event of suspension or cancellation, the Seller shall have the option to terminate this Agreement without liability. Purchaser shall remain liable to Seller for material supplied and work performed and any other damages or expenses incurred by Seller. Seller shall retain the Deposit and apply all equipment and labor costs associated with buying and preparing the Equipment and the installation identified on Purchaser's Proposal ("Accrued Costs") to it. If the Deposit does not fully satisfy the costs accrued upon termination, Purchaser shall be required to satisfy any Accrued Costs upon receipt of a final invoice, while any amount of overpayment to Seller shall be paid to Purchaser promptly upon such termination of this Agreement. Title of Equipment shall not pass to Purchaser unless and until Seller is paid in full for all Accrued Costs. In the event that this matter is turned over to an attorney for collection, the Purchaser agrees that the jurisdiction shall be by the laws of New York State; and the Purchaser shall pay attorneys' fees, collection agency costs, interest on unpaid principal balance at the rate of sixteen percent (16%) per annum, and all cost. Seller will exercise all reasonable care in furnishing the services and furnishing parts and equipment provided herein, but shall not be liable for delays or failures to do so caused by Acts of God, government, labor difficulties, failure of transportation, or other causes beyond the control of Seller. In the event of Seller's material breach of this Agreement, Purchaser may cancel this Agreement. This shall be the sole and exclusive remedy available to the Purchaser.
+    Generally, all hardware identified in the Proposal is covered by a limited manufacturer's ONE (1) YEAR warranty, covering parts and labor. Seller's obligations under this Warranty are limited to the repair and/or replacement of defective parts and labor charges directly associated with these component replacements. Seller shall not be liable for any special, indirect, incidental, personal, or consequential damages for breach of Warranty. Any action taken by Purchaser or its agents regarding the Equipment, whether a modification or other action that is not performed and/or not authorized to be performed by Seller, will void this warranty. Some equipment may be further limited by the manufacturer's warranty. There is a 25% restocking fee, unless Equipment is defective. Any Return of Equipment requires return of all original packaging.The Proposal does not include local sales tax, shipping, or freight charges. If Purchaser intends to use a Certificate of Capital Improvement; such Certificate must be supplied before proposal is created.  ALL CERTIFICATES OF CAPITAL IMPROVEMENT SUPPLIED AFTER PROPOSAL IS CREATED WILL BE CHARGED AN ADDITIONAL 3% FEE.  If Certificate is supplied after project has closed and final invoice generated, Certificate of Capital Improvements will no longer be accepted.  Purchaser may apply for a refund of sales tax using Form AU-11 directly with NY Dept of Taxation and Finance.  For more information see TB-ST-350 and TB-ST-240. All prices reflect a 3.58% cash/check payment method discount. Seller may assign and transfer this agreement or all or any of the rights hereunder to any other entity, subsidiary, affiliate or related company without limitations and without consent and this agreement shall be binding upon and inure to this contract. The construction and interpretation of this Agreement or any counterclaims resulting from this agreement shall at all times and in all respects be governed by the laws of the State of New York. By signing this proposal, Purchaser accepts the rates and term set forth herein and acknowledges that the services are being provided by Seller pursuant to its Terms and Conditions, which have been reviewed, understood, and signed by Purchaser.
+    </p>
+  </div>
+  <div class='sign-container'>
+    <div class='inputs'>
+      <input placeholder="Initials" type="text" />
+      <input placeholder="email" type="text" />
+      <input placeholder="Purchase order # (If nessesary)" type="text" />
+    </div>
+    <div class='sign-box'>
+      <div>
+        X
+      </div>
+    </div>
+  </div>
+  <button class='confirm'> Confirm </button>
+  <div class='footer'>
+    <p>1 Union Squre West</p>
+    <p>New York, NY</p>
+  </div>
+</body>
