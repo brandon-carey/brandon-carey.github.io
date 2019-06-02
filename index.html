@@ -4,6 +4,10 @@
   <script language="javascript" type="text/javascript" src="https://www.orderporter.com/cust/jQuery/jquery-1.8.0.min.js"></script>
   <script language="javascript" type="text/javascript" src="https://www.orderporter.com/cust/Sell/script/jquery/jquery-ui-1.10.4.custom.min.js"></script>
   <script language="javascript" type="text/javascript" src="https://www.orderporter.com/cust/jQuery/jSignature/jSignature.min.js"></script>
+  <script src="https://kit.fontawesome.com/1af791a195.js"></script>
+
+
+
 
   <link rel="Stylesheet" type="text/css" href="https://www.orderporter.com/cust/Sell/script/jquery/jquery-ui-1.10.4.custom.min.css">
   <style type="text/css">
@@ -67,14 +71,25 @@
     .quote-number {
       color: white;
       font-size: 20px;
-      margin: 0px 0px 50px 0px;
+      margin: 0px 0px 125px 0px;
       font-family: Avenir Next;
     }
 
-    .arrow {
+    @keyframes bounce-1 {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-25px); }
+      100% { transform: translateY(0); }
+    }
+
+    #arrow {
       color: white;
       font-size: 100px;
-      margin: 0px 0px 50px 0px;
+      margin: 0px 0px 35px 0px;
+      animation-name: bounce-1;
+      animation-timing-function: linear;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      opacity: 0.6;
     }
 
     .view-proposal {
@@ -86,7 +101,8 @@
       opacity: 0.95;
       border: 1px solid red;
       color: white;
-      font-size: 26px
+      font-size: 26px;
+      cursor: pointer;
     }
 
     .quote-overview, .approval-title {
@@ -140,7 +156,7 @@
     }
 
     .sign-box {
-      width: 700px;
+      width: 550px;
       height: 100px;
       background: #DBDBDB;
       padding: 20px;
@@ -254,6 +270,7 @@
       border-width: 0 0 2px;
       width: 375px;
       border-color: #9B9B9B;
+      font-size: 20px;
     }
 
     input:focus {
@@ -266,6 +283,10 @@
       font-family: Avenir Next;
       font-weight: 100;
       padding: 0px;
+    }
+
+    button:focus {
+      outline:0;
     }
 
     .confirm {
@@ -286,7 +307,7 @@
 
     .footer {
       display: flex;
-      padding: 0 20px;
+      padding: 0 125px;
       justify-content: space-between;
     }
 
@@ -324,8 +345,10 @@
       <p class='header-title'> Gontar Residence </p>
       <p class='sub-title'> Lighting and Shades </p>
       <p class='quote-number'> Quote # bcarey02251v3 </p>
-      <p class='arrow'>&darr;</p>
-      <button class='view-proposal'> View Proposal </button>
+      <i id='arrow' class="fas fa-arrow-down"></i>
+      <form target="_blank" action="https://www.orderporter.com/orderporterpdf/#Quote.OrderPorterPasscode.#DocExtension()" method="get">
+        <button class='view-proposal'> View Proposal </button>
+      </form>
     </div>
   </div>
   <div>
