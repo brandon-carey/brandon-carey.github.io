@@ -315,13 +315,13 @@
       outline:0;
     }
 
-    #confirm {
+    .confirm {
       border-radius: 8px;
       background-color: grey;
       background-color: #dddddd;
       width: 300px;
       height: 60px;
-      opacity: 0.2;
+      opacity: 0.9;
       border: 1px solid red;
       color: white;
       font-size: 26px;
@@ -329,7 +329,7 @@
       margin: auto;
       margin-top: 100px;
       margin-bottom: 100px;
-      cursor: not-allowed;
+      cursor: pointer;
     }
 
     button {
@@ -427,7 +427,7 @@
     $(function(){
 
       //Disable all buttons and change text to "Submitting" on click
-      $('form').submit(function(e){
+      $('.confirm').submit(function(e){
         $('input:submit').attr("disabled", true);
         $('input:submit').attr("value", 'Submitting');
         return true;
@@ -537,10 +537,12 @@
   </div>
   <hr class='line'>
   <p class='approval-title'>Approval</p>
+
+<!-- #Quote.BeginFormHtml() -->
   <div class='approve-container'>
     <div class='check-and-sig'>
       <label class="container">I agree to terms and conditions
-        <input type="checkbox">
+        <input type="checkbox" name="ApproveOrder">
         <span class="checkmark"></span>
       </label>
     </div>
@@ -562,10 +564,9 @@
 
   <div class='sign-container'>
     <div class='inputs'>
-      <input placeholder="Initials" type="text" />
-      <input placeholder="email" type="text" />
-      <input placeholder="Purchase order # (If nessesary)" type="text" />
-
+      <input placeholder="Initials" type="text" name="#Quote.InputOrderPorterInitialsSig" value="#Quote.OrderPorterInitialsSig"  />
+      <input placeholder='email' type="text" name="#Quote.InputOrderPorterEmailSig" value="#Quote.OrderPorterEmailSig"/>
+      <input type="text" name="#Quote.InputPurchaseOrderNumber" size="40" value="#Quote.PurchaseOrderNumber" />
     </div>
     <div id="Signature">
       <div>
@@ -578,12 +579,30 @@
     <input type="button" id='ClearButton' value='Clear'>
     <input name="base64customersig" type="hidden" class="uniquesignatureclass"/>
   </div>
+  <input class='confirm' type="submit" value="Accept Order" id="submission"/>
+  <!-- <div class="confirm"> -->
+    <!-- #UnapprovedBegin() -->
+    <!-- <input type="submit" value="Accept Order" id="submission"/> -->
+    <!-- #UnapprovedEnd() -->
+  <!-- </div> -->
+<!-- #Quote.EndFormHtml() -->
+<!-- #Quote.BeginFormHtml() -->
 
-  <div class="confirm">
-    <input type="submit" id="confirm" value="Accept Order" id="submisssion"/>
-  </div>
+         <!-- <input type="checkbox" name="ApproveOrder"> -->
+         <!-- <input placeholder='initi' class = 'FieldName' type="text" name="#Quote.InputOrderPorterInitialsSig" value="#Quote.OrderPorterInitialsSig" size="20" /> -->
+         <!-- <input placeholder='email' class = 'FieldName' type="text" name="#Quote.InputOrderPorterEmailSig" size="40" value="#Quote.OrderPorterEmailSig"/> -->
+         <!-- <div class="Center">#UnapprovedBegin()<input type="submit" value="Accept Order" id="submission" />#UnapprovedEnd()</div> -->
 
-
+<!-- <div id = "SignatureRow" style="display:none;"> -->
+<!--         <p class="SigPay">Sign Here:</p> -->
+<!--         <div class = "Center"> -->
+<!--          <img class = "SignX" src ="https://www.orderporter.com/cust/jQuery/jSignature/x.png"/> -->
+<!--          <div id ="Signature"></div> -->
+<!--          <input type="button" id = "ClearButton" value="Clear Signature" /> -->
+<!--          <input name="base64customersig" type="hidden" class="uniquesignatureclass" /> -->
+<!--         </div> -->
+<!--        </div> -->
+<!-- #Quote.EndFormHtml() -->
 
   <div class='footer'>
     <p>1 Union Square West</p>
